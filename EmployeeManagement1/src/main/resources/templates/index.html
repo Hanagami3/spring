@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <table class="table table-dark">
+                    <thead>
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Firstname</th>
+                        <th scope="col">Lastname</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="employee: ${listEmployees}">
+                        <td th:text="${employee.id}"/>
+                        <td th:text="${employee.firstname}"/>
+                        <td th:text="${employee.lastname}"/>
+                        <td th:text="${employee.email}"/>
+                        <td>
+                            <form action="#" data-th-action="@{/deleteEmploye"
+                        </td>
+                        <td>
+                            <a class="bg-primary">Update</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <h2>Add employee</h2>
+
+    <form action="#" th:action="@{/saveEmployee}" th:object="${employee}" method="post">
+        <div class="form-group">
+            <label>Firstname</label>
+            <input type="text" class="form-control"
+                   id="exampleInputFirstname" aria-describedby="emailHelp"
+                   >
+        </div>
+
+        <div class="form-group">
+            <label>Lastname</label>
+            <input type="text" class="form-control"
+                   >
+
+
+        </div>
+
+        <div class="form-group">
+            <label>Email address</label>
+            <input type="text" class="form-control"
+                   >
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+</body>
+</html>
+
+
+
+<!--
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Firstname</span>
+        </div>
+        <input type="text" class="form-control" placeholder="UserFirstname"
+               aria-label="Username" aria-describedby="basic-addon1">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon2">Lastname</span>
+        </div>
+        <input type="text" class="form-control" placeholder="UserLastname"
+               aria-label="UserLastname" aria-describedby="basic-addon2">
+    </div>
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Email</span>
+        </div>
+        <input type="text" class="form-control" placeholder="NameUser@example.com"
+               aria-label="NameUser@example.com" aria-describedby="basic-addon3">
+    </div>-->
